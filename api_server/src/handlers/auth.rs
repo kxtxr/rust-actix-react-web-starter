@@ -4,7 +4,7 @@ use actix_web::{
     HttpResponse,
 };
 use diesel::prelude::*;
-use diesel::MysqlConnection;
+use diesel::PgConnection;
 use futures::Future;
 
 use crate::errors::ServiceError;
@@ -69,7 +69,7 @@ pub fn get_me(logged_user: LoggedUser) -> HttpResponse {
 /// Diesel query
 fn query(auth_data: AuthData, pool: web::Data<Pool>) -> Result<SlimUser, ServiceError> {
     use crate::schema::users::dsl::{email, users};
-    let conn: &MysqlConnection = &pool.get().unwrap();
+    let conn: &PgConnection = &pool.get().unwrap();
     let mut items = users
         .filter(email.eq(&auth_data.email))
         .load::<User>(conn)?;

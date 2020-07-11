@@ -44,7 +44,7 @@ fn query(
     use crate::schema::invitations::dsl::{id, invitations};
     use crate::schema::users::dsl::{email, users};
 
-    let conn: &MysqlConnection = &pool.get().unwrap();
+    let conn: &PgConnection = &pool.get().unwrap();
     invitations
         .filter(id.eq(&invitation_id))
         .load::<Invitation>(conn)

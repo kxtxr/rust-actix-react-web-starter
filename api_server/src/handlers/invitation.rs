@@ -1,5 +1,5 @@
 use actix_web::{error::BlockingError, web, HttpResponse};
-use diesel::{prelude::*, MysqlConnection};
+use diesel::{prelude::*, PgConnection};
 use futures::Future;
 
 use crate::errors::ServiceError;
@@ -45,7 +45,7 @@ fn query(
     let uuid: String = format!("{}", uuid::Uuid::new_v4());
     dbg!(&uuid);
     let new_invitation: Invitation = Invitation::from_details(uuid, email);
-    let conn: &MysqlConnection = &pool.get().unwrap();
+    let conn: &PgConnection = &pool.get().unwrap();
 
     diesel::insert_into(invitations)
         .values(&new_invitation)
