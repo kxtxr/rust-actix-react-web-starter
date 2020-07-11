@@ -1,46 +1,21 @@
-# diesel
-
-Diesel's `Getting Started` guide using SQLite for Actix web
+# rust-actix-react-web-starter
+A bare Rust web app that uses [actix-web](https://actix.rs/), [Diesel](http://diesel.rs/) and [React](https://reactjs.org/) to get you started building your Rust and React applications.
 
 ## Usage
 
-### init database sqlite
-
 ```bash
-# if opensuse: sudo zypper install sqlite3-devel
-cargo install diesel_cli --no-default-features --features mysql
-cd api_server
-echo "DATABASE_URL=mysql://root@localhost:3306/test_db" > .env
+git clone https://github.com/16kilobyte/rust-actix-react-web-starter.git
+cd  rust-actix-react-web-starter/api_server
+cp .env.sample .env
+diesel setup --database-url='postgres://user:password@localhost:5432/api_server_db'
 diesel migration run
-```
-
-### server
-
-```bash
-# if ubuntu : sudo apt-get install libsqlite3-dev
-# if fedora : sudo dnf install libsqlite3x-devel
-# if opensuse: sudo zypper install libsqlite3-0
-cd api_server
-cargo run (or ``cargo watch -x run``)
-# Started http server: 127.0.0.1:8080
+cargo run
+# Started http server: 127.0.0.1:3000
 ```
 
 ### web client
 
-[http://127.0.0.1:8080/NAME](http://127.0.0.1:8080/NAME)
+[http://127.0.0.1:3000/](http://127.0.0.1:3000/)
 
-### sqlite client
-
-```bash
-# if ubuntu : sudo apt-get install sqlite3
-# if fedora : sudo dnf install sqlite3x
-# if opensuse: sudo zypper install sqlite3
-sqlite3 test.db
-sqlite> .tables
-sqlite> select * from users;
-```
-
-
-## Postgresql
-
-You will also find another complete example of diesel+postgresql on      [https://github.com/TechEmpower/FrameworkBenchmarks/tree/master/frameworks/Rust/actix](https://github.com/TechEmpower/FrameworkBenchmarks/tree/master/frameworks/Rust/actix)
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/16kilobyte/rust-actix-react-web-starter/blob/master/LICENSE) file for details.
