@@ -12,7 +12,7 @@ actix-files = "0.1.4"
 argonautica = "0.2.0"
 chrono = { version = "0.4.6", features = ["serde"] }
 derive_more = "0.15.0"
-diesel = { version = "1.4.2", features = ["postgres","uuidv07", "r2d2", "chrono"] }
+diesel = { version = "1.4.6", features = ["postgres","uuidv07", "r2d2", "chrono"] }
 dotenv = "0.14.1"
 env_logger = "0.6"
 futures = "0.1"
